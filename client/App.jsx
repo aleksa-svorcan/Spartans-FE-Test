@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
 import Navbar from './components/navbar/Navbar.jsx'
+import UserList from './components/user-list/UserList.jsx'
 
 class App extends Component {
   constructor() {
@@ -41,8 +42,10 @@ class App extends Component {
   }
   render() {
     return (
+
       <div className="main">
         <Navbar searchChange={this.seachInputChange.bind(this)} submit={this.searchSubmit.bind(this)}/>
+        <UserList users={this.state.gitHubSearchResults}/>
       </div>
       
     );
