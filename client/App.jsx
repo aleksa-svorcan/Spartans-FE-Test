@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
+import Navbar from './components/navbar/Navbar.jsx'
+
 class App extends Component {
   constructor() {
     super();
@@ -9,7 +11,9 @@ class App extends Component {
   }
   render() {
     return (
-      <h1>react</h1>
+      <div className="main">
+        <Navbar/>
+      </div>
       
     );
   }
