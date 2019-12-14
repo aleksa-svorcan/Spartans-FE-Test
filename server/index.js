@@ -6,16 +6,8 @@ const path = require('path');
 app.use('/', express.static(path.join(__dirname, '../dist')))
 app.use('/dist', express.static(path.join(__dirname, '../dist')))
 
-// app.get('/dist/main.js', (req, res) => {
-// 	res.sendfile(
-// 		path.join(__dirname, '../dist/main.js')
-// 	)
-// });
-
-// app.get('/', (req, res) => {
-// 	res.sendfile(
-// 		path.join(__dirname, '../client/index.html')
-// 	)
-// });
+app.get('*', (req, res) => {
+	res.redirect('/')
+});
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))

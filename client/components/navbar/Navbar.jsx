@@ -5,7 +5,7 @@ function Navbar(props) {
   
   return (
     <nav id="navbar">
-    <form onSubmit={props.submit}>
+    <form className="navbar-form" onSubmit={props.submit}>
       <input id="search" onChange={props.searchChange}  type="text" placeholder="Enter GitHub username..."></input>
     </form>
       <h1 className="navbar-title">GitHub Database</h1>

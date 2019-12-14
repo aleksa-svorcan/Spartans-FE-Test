@@ -1,16 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom'
 function UserListItem(props) {
-	return (
 
-		<div className="user-list-item">
-			<div className="user-image-container">
-				<img className="user-image" src={props.user.avatar_url}/>
+	return (
+		<Link to={`/repos/${props.user.login}`}>
+			<div className="user-list-item">
+				<div className="user-image-container">
+					<img className="user-image" src={props.user.avatar_url}/>
+				</div>
+				<div className="user-text-container">
+					<h3 className="user-username">{props.user.login}</h3>
+				</div>
 			</div>
-			<div className="user-text-container">
-				<h3 className="user-username">{props.user.login}</h3>
-				<p className="user-description">sample text</p>
-			</div>
-		</div>
+		</Link>
 		);
 }
 export default UserListItem;

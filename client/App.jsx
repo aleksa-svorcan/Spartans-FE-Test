@@ -1,55 +1,34 @@
-import React, { Component } from "react";
-import ReactDOM from "react-dom";
-import Navbar from './components/navbar/Navbar.jsx'
-import UserList from './components/user-list/UserList.jsx'
+import React from 'react'
+import ReactDOM from 'react-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
+import Home from './components/home/Home.jsx'
+import UserRepos from './components/user-repos/UserRepos.jsx'
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      searchValue: '',
-      gitHubSearchResults: [],
-      isLoading: false
-    };
-  }
-  seachInputChange(event) {
-    this.setState({
-      searchValue: event.target.value
-    })
-  }
-  searchSubmit(event) {
-    event.preventDefault()
-    this.setState({
-      isLoading: true,
-    });
-    this.searchGitHubApi(this.state.searchValue)  
-  }
-  searchGitHubApi(username) {
-    fetch(`https://api.github.com/search/users?q=${username}`)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoading: false,
-            gitHubSearchResults: result.items
-          });
-        },
-        (error) => {
-         //error handling to do
-        }
-      )
-
-  }
-  render() {
-    return (
-
-      <div className="main">
-        <Navbar searchChange={this.seachInputChange.bind(this)} submit={this.searchSubmit.bind(this)}/>
-        <UserList users={this.state.gitHubSearchResults}/>
-      </div>
-      
-    );
-  }
-}
-
-ReactDOM.render(<App/>, document.getElementById('app'))
+const routing = (
+  <Router>
+    <div>
+      <ul>
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/repos">Users</Link>
+        </li>
+        <li>
+          <Link to="/contact">Contact</Link>
+        </li>
+      </ul>
+      <Switch>
+        <Route exact path="/" component = {Home} />
+        <Route path="/repos/:id" component = {UserRepos} />
+      </Switch>
+    </div>
+  </Router>
+)
+ReactDOM.render(routing, document.getElementById('app'))
