@@ -13,17 +13,6 @@ import UserRepos from './components/user-repos/UserRepos.jsx'
 const routing = (
   <Router>
     <div>
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/repos">Users</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-      </ul>
       <Switch>
         <Route exact path="/" component = {Home} />
         <Route path="/repos/:id" component = {UserRepos} />
