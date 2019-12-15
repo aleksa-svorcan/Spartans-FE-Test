@@ -11,8 +11,6 @@ class UserRepos extends Component {
     }
   }
   componentDidMount() {
-    console.log('did mount')
-    console.log("https://api.github.com/users/" + this.state.username + "/repos")
     fetch("https://api.github.com/users/" + this.state.username + "/repos")
       .then(res => res.json())
       .then(
@@ -50,4 +48,5 @@ class UserRepos extends Component {
     )
   }
 }
+
 export default UserRepos;

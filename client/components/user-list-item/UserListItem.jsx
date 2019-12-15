@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
+
 function UserListItem(props) {
 
 	return (
@@ -16,4 +18,9 @@ function UserListItem(props) {
 		</Link>
 		);
 }
+
+UserListItem.propTypes = {
+  user: PropTypes.object
+};
+
 export default UserListItem;

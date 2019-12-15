@@ -1,5 +1,6 @@
 import React from 'react';
 import UserListItem from '../user-list-item/UserListItem.jsx'
+import PropTypes from 'prop-types'; 
 
 function UserList(props) {
 	console.log(props)
@@ -18,5 +19,11 @@ function UserList(props) {
     </div>
   );
 }
+
+UserList.propTypes = {
+  users: PropTypes.array
+};
+
+
 export default UserList;
 

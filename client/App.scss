@@ -1,0 +1,22 @@
+@import './components/home/Home.scss';
+@import './components/navbar/Navbar.scss';
+@import './components/user-list/UserList.scss';
+@import './components/user-list-item/UserListItem.scss';
+@import './components/user-repos/UserRepos.scss';
+@import './components/user-repos-item/UserReposItem.scss';
+
+body,html {
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 0;
+	max-width: 100%;
+}
+
+#app {
+	max-width: 100%;
+	background:#ebebe0;
+}
+
+.main {
+	max-width: 100%;
+}
+

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types'; 
 
 function UserReposItem(props) {
-	console.log('props',props.repo)
 	
 	return (
 		<a href={props.repo.html_url} target="_blank" className="user-repo-item">
@@ -21,4 +21,9 @@ function UserReposItem(props) {
 		</a>	
 	);
 }
+
+UserReposItem.propTypes = {
+  repo: PropTypes.object
+};
+
 export default UserReposItem;

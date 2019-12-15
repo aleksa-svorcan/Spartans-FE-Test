@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types'; 
+
 function Navbar(props) {
   
   const greeting = 'Hello Function Component!';
@@ -12,4 +14,10 @@ function Navbar(props) {
     </nav>
   );
 }
+
+Navbar.propTypes = {
+  submit: PropTypes.func,
+  searchChange: PropTypes.func
+};
+
 export default Navbar;

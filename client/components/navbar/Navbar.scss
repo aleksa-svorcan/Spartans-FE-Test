@@ -1,0 +1,43 @@
+
+#navbar {
+	max-width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 10px 20px;
+	background: #24292e;
+	color: white;
+	height: 24px;
+
+	.navbar-form {
+		height: 100%;
+	}
+
+	.navbar-title {
+		margin: 0;
+		font-size: 21px;
+	}
+
+	.navbar-right {
+		height: 100%;
+	}
+
+	.navbar-left {
+		height: 100%;
+	}
+
+	#search {
+		border-radius: 5px;
+		height: 100%;
+		border: none;
+		width: 200px;
+		outline: none;
+		padding-left: 5px;
+	}
+
+	#search:active {
+    border: none;
+	}
+}
+
+
