@@ -15,7 +15,6 @@ class UserRepos extends Component {
       .then(res => res.json())
       .then(
         (result) => {
-          console.log('result', result)
           this.setState({
             reposSearchResults: result
           });

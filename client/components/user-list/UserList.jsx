@@ -3,7 +3,6 @@ import UserListItem from '../user-list-item/UserListItem.jsx'
 import PropTypes from 'prop-types'; 
 
 function UserList(props) {
-	console.log(props)
   return (
 
     <div className="user-list">

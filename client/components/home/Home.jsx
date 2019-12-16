@@ -1,16 +1,28 @@
 import React, { Component } from "react";
 import Navbar from '../navbar/Navbar.jsx'
 import UserList from '../user-list/UserList.jsx'
+import { connect } from "react-redux";
+import { addUsers } from "../../store/actions.js";
+
+//<UserList users={this.state.gitHubSearchResults}/>
+
+
+const mapStateToProps = state => {
+  return { users: state.users };
+}
 
 class Home extends Component {
-  constructor() {
+  constructor(props) {
     super();
     this.state = {
       searchValue: '',
       gitHubSearchResults: [],
       isLoading: false
     };
+
+    console.log('user', props.users)
   }
+
   seachInputChange(event) {
     this.setState({
       searchValue: event.target.value
@@ -28,6 +40,7 @@ class Home extends Component {
       .then(res => res.json())
       .then(
         (result) => {
+          this.props.addUsers(result.items);
           this.setState({
             isLoading: false,
             gitHubSearchResults: result.items
@@ -43,11 +56,16 @@ class Home extends Component {
     return (
       <div className="main">
         <Navbar searchChange={this.seachInputChange.bind(this)} submit={this.searchSubmit.bind(this)}/>
-        <UserList users={this.state.gitHubSearchResults}/>
+          <div className="test">{
+            this.props.users && this.props.users.length  && this.props.users !== undefined ? this.props.users.map(
+              (user,index) => ( user ? <p key={index}>{user.name}</p> : <p key={index}>undefined</p>)) : <p>Nope!</p> }</div>
       </div>
       
     );
   }
 }
 
-export default Home
+
+
+export default connect( mapStateToProps, mapDispatchToProps )(Home)
+
