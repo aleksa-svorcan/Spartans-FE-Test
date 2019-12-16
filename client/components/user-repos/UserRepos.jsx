@@ -9,7 +9,8 @@ class UserRepos extends Component {
     this.state = {
       username: props.match.params.id,
       reposSearchResults: [],
-      isLoading: false
+      isLoading: false,
+      apiError: ''
 
     }
   }
@@ -18,7 +19,12 @@ class UserRepos extends Component {
       isLoading: true,
     });
     fetch("https://api.github.com/users/" + this.state.username + "/repos")
-      .then(res => res.json())
+      .then( response => {
+        if (!response.ok) {  
+          throw response
+        }
+          return response.json()
+      })
       .then(
         (result) => {
           this.setState({
@@ -27,12 +33,20 @@ class UserRepos extends Component {
           });
         },
         (error) => {
-         console.log('error', error)
+         this.setState({
+            apiError: error.status + ' - ' + error.statusText,
+            isLoading: false
+          })
         }
       )
+      .catch( error => {
+         this.setState({
+            apiError: error.status + ' - ' + error.statusText,
+            isLoading: false
+          })
+      })
   }
 
-  //"https://api.github.com/users/aleksa/repos"
   render() {
     return (
       <div>
@@ -44,6 +58,7 @@ class UserRepos extends Component {
           isLoading={this.state.isLoading} 
           reposUserName={this.state.username}
           hasRepos={this.state.reposSearchResults.length}
+          errorMessage={this.state.apiError}
           /> 
         <div className="user-repos">
         

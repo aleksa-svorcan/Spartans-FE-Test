@@ -6,6 +6,11 @@
 @import './components/user-repos/UserRepos.scss';
 @import './components/user-repos-item/UserReposItem.scss';
 
+$screen-sm-min: 576px;
+$screen-md-min: 768px;
+$screen-lg-min: 992px;
+$screen-xl-min: 1200px;
+
 body,html {
 	font-family: 'Roboto', sans-serif;
 	margin: 0;

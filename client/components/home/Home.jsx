@@ -33,7 +33,9 @@ class Home extends Component {
   searchGitHubApi(username) {
     fetch(`https://api.github.com/search/users?q=${username}`)
       .then( response => {
-        if (!response.ok) { console.log('response',response.statusText) }
+        if (!response.ok) {  
+          throw response
+        }
           return response.json()
       })
       .then( result => {
@@ -51,7 +53,10 @@ class Home extends Component {
           });
       })
       .catch( error => {
-        console.log('error api', error) 
+         this.setState({
+            apiError: error.status + ' - ' + error.statusText,
+            isLoading: false
+          })
       })
   }
   render() {
@@ -66,6 +71,7 @@ class Home extends Component {
           validSearch={this.props.users.length} 
           userName={this.props.searchValue}
           isLoading={this.state.isLoading}
+          errorMessage={this.state.apiError}
           />    
         <UserList users={this.props.users}/>
       </div>
