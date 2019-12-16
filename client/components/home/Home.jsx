@@ -53,6 +53,10 @@ class Home extends Component {
           });
       })
       .catch( error => {
+        this.props.dispatch({
+            type: "ADD_USERS", 
+            users: []
+          })
          this.setState({
             apiError: error.status + ' - ' + error.statusText,
             isLoading: false
