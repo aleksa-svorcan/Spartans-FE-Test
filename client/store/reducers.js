@@ -1,38 +1,27 @@
-import { ADD_USERS } from "./actions.js";
+import { ADD_USERS, SEARCH_VALUE } from "./actions.js";
 
-console.log('check add users', ADD_USERS )
 const initialState = {
-  users: [
-  	{
-  		id: 1,
-  		name: 'name1',
-  	},
-  	{
-  		id: 2,
-  		name: 'name2',
-  	},
-  	{
-  		id: 3,
-  		name: 'name3',
-  	},
-  	{
-  		id: 4,
-  		name: 'name4',
-  	}
-  ]
+  users: [],
+  searchValue: '',
 };
 
 
-function usersDataReducer(state = initialState, action){
-    switch(action.type) {
-        case ADD_USERS:
-          return Object.assign({}, state, 
-              {
-                users: [...state.users, action.users]
-               }); 
-         default: 
-           return state;
-     }
+function Reducer(state = initialState, action){	
+  switch(action.type) {
+    case ADD_USERS:
+      return Object.assign({}, state, 
+      	{
+      	  users: action.users ? [...action.users] : []
+    		});
+    case SEARCH_VALUE: 
+    	console.log('action', action.searchValue)
+    	return Object.assign({}, state, 
+      	{
+      	  searchValue: action.searchValue
+    		});
+      default: 
+        return state;
+  }
 }
 
-export default usersDataReducer;
+export default Reducer;

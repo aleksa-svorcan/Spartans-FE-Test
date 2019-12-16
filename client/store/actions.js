@@ -1,9 +1,12 @@
 export const ADD_USERS = 'ADD_USERS'
+export const SEARCH_VALUE = 'SEARCH_VALUE'
 
-export function addUsers(users) {
-  return
-    {     
-      type: ADD_USERS,
-      users
-    }
-}
+export const addUsers = (users) => ({
+  users,
+  type: ADD_USERS
+});
+
+export const searchValue = (searchValue) => ({
+	searchValue,
+	type: SEARCH_VALUE
+})

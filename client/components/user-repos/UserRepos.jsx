@@ -1,22 +1,29 @@
 import React, { Component } from "react";
 import UserReposItem from '../user-repos-item/UserReposItem.jsx'
+import Messages from '../messages/Messages.jsx'
+import { Link } from "react-router-dom";
 
 class UserRepos extends Component {
   constructor(props) {
     super();
     this.state = {
       username: props.match.params.id,
-      reposSearchResults: []
+      reposSearchResults: [],
+      isLoading: false
 
     }
   }
   componentDidMount() {
+    this.setState({
+      isLoading: true,
+    });
     fetch("https://api.github.com/users/" + this.state.username + "/repos")
       .then(res => res.json())
       .then(
         (result) => {
           this.setState({
-            reposSearchResults: result
+            reposSearchResults: result,
+            isLoading: false
           });
         },
         (error) => {
@@ -30,9 +37,16 @@ class UserRepos extends Component {
     return (
       <div>
         <div className="user-repos-header">
-          <a className="user-repos-back" href="/">Back</a>
+          <Link className="user-repos-back" to="/">Back</Link>
+          <h1 className="navbar-title">GitHub API Project</h1>
         </div>
+        <Messages 
+          isLoading={this.state.isLoading} 
+          reposUserName={this.state.username}
+          hasRepos={this.state.reposSearchResults.length}
+          /> 
         <div className="user-repos">
+        
         {
           this.state.reposSearchResults.map(
             (repo,index) => (
