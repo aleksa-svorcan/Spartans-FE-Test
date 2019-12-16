@@ -23,7 +23,7 @@ class UserRepos extends Component {
         if (!response.ok) {  
           throw response
         }
-          return response.json()
+        return response.json()
       })
       .then(
         (result) => {
